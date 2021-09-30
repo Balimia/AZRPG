@@ -1,6 +1,17 @@
 version: '3.9'
 
 services:
+  app:
+    container_name: app
+    build: .
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - ./docker.env
+    volumes:
+      - ./:/app
+
   db:
     container_name: db
     image: mysql:latest
@@ -10,15 +21,10 @@ services:
     volumes:
       - data:/var/lib/mysql
 
-  app:
-    container_name: app
-    build: .
-    depends_on:
-      - db
-    env_file:
-      - ./docker.env
-    volumes:
-      - ./:/app
+  redis:
+    container_name: redis
+    image: redis:alpine
+    restart: always
 
 volumes:
   data:
