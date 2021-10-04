@@ -4,6 +4,7 @@ services:
   app:
     container_name: app
     build: .
+    command: npm run dev
     depends_on:
       - db
       - redis
@@ -17,7 +18,7 @@ services:
     image: mysql:latest
     restart: always
     ports:
-      - 3374:3306
+      - 3306:3306
     env_file:
       - ./docker.env
     volumes:
@@ -28,7 +29,10 @@ services:
     image: redis:alpine
     restart: always
     ports:
-      - 7433:6379
+      - 6379:6379
+    volumes:
+      - cache:/data
 
 volumes:
   data:
+  cache:
