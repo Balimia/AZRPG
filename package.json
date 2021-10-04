@@ -1,0 +1,31 @@
+{
+	"name": "azrpg",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node index.js",
+		"dev": "nodemon index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Balimia/AZRPG.git"
+	},
+	"keywords": [],
+	"author": "Balimia",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Balimia/AZRPG/issues"
+	},
+	"homepage": "https://github.com/Balimia/AZRPG#readme",
+	"dependencies": {
+		"discord.js": "^13.1.0",
+		"mysql2": "^2.3.0",
+		"redis": "^3.1.2",
+		"wait-port": "^0.2.9"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.13"
+	}
+}
