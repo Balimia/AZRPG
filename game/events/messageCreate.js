@@ -1,4 +1,4 @@
-const { PREFIX } = require('../admin/config.json');
+const { PREFIX } = require('../../config.json');
 const filter = require('../game/utils/filterMessage');
 
 module.exports = (message) => {
