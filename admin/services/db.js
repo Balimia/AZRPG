@@ -8,7 +8,7 @@ const {
 	MYSQL_PORT: PORT,
 	MYSQL_USER: USER,
 	MYSQL_PASSWORD: PASSWORD,
-} = require('../config.json');
+} = require('../../config.json');
 
 let pool;
 

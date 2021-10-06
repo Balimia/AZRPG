@@ -1,4 +1,4 @@
-const { PREFIX } = require('../../admin/config.json');
+const { PREFIX } = require('../../config.json');
 const collection = require('../utils/commands');
 const { isPlayerSpam, isPlayerBusy, setSpam } = require('./sets');
 
