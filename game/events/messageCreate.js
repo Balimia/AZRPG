@@ -1,13 +1,15 @@
-const { PREFIX } = require('../../config.json');
-const filter = require('../game/utils/filterMessage');
+const { invalid, filter, notify } = require('../validation/filter');
+const { commands } = require('../validation/var');
+const { playerData } = require('../utils');
 
-module.exports = (message) => {
-	if (valid(message)) return filter(message);
-};
+module.exports = async (message) => {
+	if (invalid(message)) return;
 
-const valid = (message) => {
-	if (message.author.bot || message.channel.type !== 'GUILD_TEXT') return false;
-	message.content = message.content.toLowerCase();
-	if (!message.content.startsWith(PREFIX)) return false;
-	return true;
+	const { command, args, failure } = filter(message);
+	if (failure) return notify(failure);
+
+	const [status, player] = await playerData.getPlayer(message);
+	if (status === 1) return commands.get('help').execute(message, player); // start
+
+	// if (status === 0) return; // existing player
 };
