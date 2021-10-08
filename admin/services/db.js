@@ -32,12 +32,12 @@ async function init() {
 	);
 }
 
-function execute(query) {
+function execute(query, values = []) {
 	return new Promise((res, rej) =>
 		pool
 			.promise()
-			.query(query)
-			.then((r) => res(r))
+			.query(query, values)
+			.then(([r, f]) => res(r))
 			.catch((err) => rej(err))
 	);
 }
