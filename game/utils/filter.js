@@ -1,5 +1,7 @@
 const { PREFIX } = require('../../config.json');
-const { commands, busy, spam } = require('./var');
+const commands = require('./var/commands');
+const busy = require('./var/busy');
+const spam = require('./var/spam');
 
 const invalid = (message) => {
 	if (message.author.bot || message.channel.type !== 'GUILD_TEXT') return true;
@@ -8,12 +10,10 @@ const invalid = (message) => {
 	return false;
 };
 
-const filter = (message) => {
+const organize = (message) => {
 	const [command, args] = sanitize(message);
 	const failure = analyze(message, command);
-
 	spam.setPlayer(message);
-
 	return { command, args, failure };
 };
 
@@ -31,8 +31,4 @@ const analyze = (message, command) => {
 	return null;
 };
 
-const notify = (failure) => {
-	console.log(failure); // send embed but from another file
-};
-
-module.exports = { invalid, filter, notify };
+module.exports = { invalid, organize };
