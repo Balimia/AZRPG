@@ -1,0 +1,14 @@
+{
+	"title": "AZ RPG",
+	"color": "2f3136",
+	"art": {
+		"logo": "https://cdn.discordapp.com/attachments/775842607498264637/848443475812155432/Hunter_Konsens.png",
+		"start": "https://cdn.discordapp.com/attachments/757464227970809896/777421964780109854/rainyRuins.gif"
+	},
+	"icons": {
+		"arrow": "<:arrow:777415298047410187>"
+	},
+	"url": {
+		"discord": "https://discord.gg/k9QVu4YWNq"
+	}
+}
