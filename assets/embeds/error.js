@@ -1,5 +1,5 @@
 const Embed = require('./Embed');
-const { formatTime } = require('../../game/utils/format');
+const { formatTime } = require('../../game/utils/formatting');
 const assets = require('../assets.json');
 
 const busy = ({ author }) => new Embed({ author, title: `Please finish what you are doing.` });

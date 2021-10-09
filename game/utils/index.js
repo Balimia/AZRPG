@@ -4,7 +4,7 @@ module.exports = {
 	busy: require('./var/busy'),
 	mysql: require('./var/mysql'),
 	filter: require('./filter'),
-	format: require('./format'),
+	formatting: require('./formatting'),
 	interface: require('./interface'),
 	logger: require('./logger'),
 	db: require('./db'),
