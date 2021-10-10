@@ -2,6 +2,8 @@ const Embed = require('./Embed');
 const { formatTime } = require('../../game/utils/formatting');
 const assets = require('../assets.json');
 
+const args = ({ author }) => new Embed({ author });
+
 const busy = ({ author }) => new Embed({ author, title: `Please finish what you are doing.` });
 
 const cooldown = ({ author }, remaining) =>
@@ -17,4 +19,4 @@ const spam = ({ author }) =>
 		'Please wait a second before using another command.'
 	);
 
-module.exports = { busy, cooldown, spam };
+module.exports = { args, busy, cooldown, spam };

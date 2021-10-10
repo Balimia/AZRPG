@@ -23,6 +23,8 @@ const notify = async (message, failure, data = null) => {
 				break;
 			case 'cooldown':
 				await display(message, embeds.error.cooldown(message, data));
+			case 'args':
+				await display(message, embeds.error.args(message));
 			default:
 				// TODO
 				break;
