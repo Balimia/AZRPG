@@ -1,15 +1,18 @@
-const { invalid, filter, notify } = require('../validation/filter');
-const { commands } = require('../validation/var');
-const { playerData } = require('../utils');
+const { interface, logger, commands, filter } = require('../utils');
 
 module.exports = async (message) => {
-	if (invalid(message)) return;
+	if (filter.invalid(message)) return;
 
-	const { command, args, failure } = filter(message);
-	if (failure) return notify(failure);
-
-	const [status, player] = await playerData.getPlayer(message);
-	if (status === 1) return commands.get('help').execute(message, player); // start
-
-	// if (status === 0) return; // existing player
+	try {
+		const filter = await filter.handle(message);
+		if (filter.failure) return interface.notify(message, filter.failure);
+		if (filter.fresh) return commands.get('Start').execute(message, filter.player);
+		if (filter.target) return console.log('Help with param: ', target); // TODO
+		if (filter.cooldown) return interface.notify(message, filter.failure, remaining); // can add command if necessary
+		if (filter.command) return console.log(filter);
+		// return await command.execute(message, player, args);
+	} catch (error) {
+		console.log('error from main thread');
+		logger.write(error?.stack);
+	}
 };
