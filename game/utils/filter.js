@@ -32,7 +32,7 @@ const handle = async (message) => {
 		const cooldown = await db.getCooldown(message, command.name);
 
 		if (cooldown) {
-			const date = new Date();
+			const date = Date.now();
 			const delta = date - cooldown.Cooldown;
 
 			if (delta < command.cooldown) {
