@@ -37,7 +37,7 @@ const handle = async (message) => {
 
 			if (delta < command.cooldown) {
 				const remaining = command.cooldown - Math.floor(delta);
-				return { failure: 'cooldown', cooldown, delta, remaining };
+				return { cooldown, delta, remaining };
 			}
 		}
 	}
