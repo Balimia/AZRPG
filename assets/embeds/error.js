@@ -1,4 +1,4 @@
-const Embed = require('./Embed');
+const Embed = require('../entities/Embed');
 const { formatTime } = require('../../game/utils/formatting');
 const assets = require('../assets.json');
 
