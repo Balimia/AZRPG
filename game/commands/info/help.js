@@ -1,28 +1,15 @@
-// const { sendMsg } = require('../../utils/helpers');
-// const { isPlayerBusy } = require('../handlers/playerBusy');
+const { information } = require('../../../assets/embeds');
+const interface = require('../../utils/interface');
 
 module.exports = {
-	name: 'help',
+	name: 'Help',
 	alias: ['help', 'h', 'info'],
-	desc: '',
+	description: '',
 	args: true,
-	usage: ['<command name>'],
-	help() {
-		return 1;
-		// const { usage } = require('../../assets/embeds');
-		// return usage(this.name, this.alias, this.desc, this.usage);
-	},
-	execute: async (message, player, args) => {
-		// if (isPlayerBusy(message)) return;
-		// if (!args || !args.help) return await sendMsg(message, generalHelp(message));
-		// return await sendMsg(message, args.help());
-	},
-};
+	usage: ['[command name]'],
+	execute: (message, player = null, args = null) => {
+		if (!args) return interface.display(message, information.help(message));
 
-/* 
-TODO
-General help message:
-*/
-const generalHelp = (message) => {
-	return 'Display Help Embed.';
+		return interface.display(message, information.info(message, args));
+	},
 };

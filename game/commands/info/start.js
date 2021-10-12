@@ -1,18 +1,14 @@
-// const help = require('./help');
-// const { sendMsg } = require('../../utils/helpers');
+const { information } = require('../../../assets/embeds');
+const interface = require('../../utils/interface');
+const help = require('./help');
 
 module.exports = {
 	name: 'Start',
 	alias: ['start', 's'],
 	description: '',
-	help() {
-		// const { usage } = require('../../assets/embeds');
-		// return usage(this.name, this.alias, this.description);
-	},
-	execute: (message, player, args = []) => {
-		console.log('start');
-		// if (player) return await help.execute(message);
-		// const { start } = require('../../assets/embeds');
-		// return await sendMsg(message, start(message));
+	execute: (message, player = null, args = null) => {
+		if (!player) return interface.display(message, information.start(message));
+
+		return help.execute(message);
 	},
 };
