@@ -1,18 +1,19 @@
-const { interface, logger, commands, filter } = require('../utils');
+const { interface, logger, commands, filter, db } = require('../utils');
 
 module.exports = async (message) => {
 	if (filter.invalid(message)) return;
 
 	try {
-		const filter = await filter.handle(message);
-		if (filter.failure) return interface.notify(message, filter.failure);
-		if (filter.fresh) return commands.get('Start').execute(message, filter.player);
-		if (filter.target) return console.log('Help with param: ', target); // TODO
-		if (filter.cooldown) return interface.notify(message, filter.failure, remaining); // can add command if necessary
-		if (filter.command) return console.log(filter);
-		// return await command.execute(message, player, args);
+		const f = await filter.handle(message);
+		if (f.failure) return await interface.notify(message, f.failure);
+		if (f.cooldown) return await interface.notify(message, 'cooldown', f.remaining); // can add command if necessary
+		if (f.fresh) return await commands.get('Start').execute(message);
+		if (f.target) return await commands.get('Help').execute(message, null, f.target);
+		if (f.command) {
+			if (f.command.cooldown) await db.setCooldown(message, f.command.name);
+			return await f.command.execute(message, f.player, f.args);
+		}
 	} catch (error) {
-		console.log('error from main thread');
 		logger.write(error?.stack);
 	}
 };
