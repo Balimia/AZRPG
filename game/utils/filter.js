@@ -33,11 +33,11 @@ const handle = async (message) => {
 
 		if (cooldown) {
 			const date = Date.now();
-			const delta = date - cooldown.Cooldown;
+			const delta = date - cooldown.cooldown;
 
 			if (delta < command.cooldown) {
 				const remaining = command.cooldown - Math.floor(delta);
-				return { cooldown, delta, remaining };
+				return { cooldown, remaining };
 			}
 		}
 	}
